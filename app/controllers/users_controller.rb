@@ -6,11 +6,10 @@ class UsersController < ApplicationController
   def create
 	@user = User.new(user_params)
 	if @user.save
-	  flash[:notice] = "You signed up successfully"
-	  flash[:color]= "valid"
+	  flash.now[:notice] = "You signed up successfully"
+	  session[:id] = @user.id
 	else
-	  flash[:notice] = "Form is invalid"
-	  flash[:color]= "invalid"
+	  flash.now[:notice] = "Form is invalid"
 	end
 	render "new"
   end

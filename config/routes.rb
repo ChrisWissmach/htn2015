@@ -13,6 +13,8 @@ Rails.application.routes.draw do
 
   post "users/create_picture"
 
+  post "competition/elo"
+
   
   root 'application#index'
 
