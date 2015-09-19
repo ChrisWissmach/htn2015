@@ -8,18 +8,18 @@ class CompetitionController < ApplicationController
 		winner_score = @winner.elo
 		loser_score = @loser.elo
 
-    expected = 1 / (1 + 10**((loser_score - winner_score)/400))
+    expected = 3 / (1 + 10**((loser_score - winner_score)/400))
     mult = 0;
     
-    if (winner_score < 1200)
+    if (winner_score < 1300)
         mult = 30
-    elsif (winner_score < 1600)
-        mult = -0.05 *  winner_score + 100
+    elsif (winner_score < 1500)
+        mult = -0.1 *  winner_score + 160
     else
         mult = 10
     end
     
-    elo = (mult * (1 - expected)).round
+    elo = (mult * (3 - expected)).round
 
     @winner.elo = winner_score + elo
     @loser.elo = loser_score - elo
@@ -55,8 +55,6 @@ class CompetitionController < ApplicationController
 
 		end 
 	
-		
-
 		if @first_pic && @second_pic
 			render :json => {:success => true, first_image: @first_pic, second_image: @second_pic, first_image_url: @first_pic.image.url, second_image_url: @second_pic.image.url}
 		else
