@@ -30,7 +30,7 @@ nav {
 	margin-top: 140px;
 }
 
-.picture {
+.pictures {
 	height: auto;
 	padding: 0px;
 	background: transparent;
@@ -41,21 +41,25 @@ nav {
 	transition: box-shadow 0.1s, width 0.5s;
 }
 
-.picture #right_picture {
+.pictures #right_picture {
 	float: right;
 }
 
-.picture img {
+.pictures img {
 	width: 100%;
 	-webkit-transition: width 0.5s, margin-left 0.5s;
 	-moz-transition: width 0.5s;
 	transition: width 0.5s;
 }
 
-.picture:active {
+.pictures:active {
 	box-shadow: -2px 2px 15px #000;
 }
 
 .desc{
 	text-align: center;
+}
+
+.desc p{
+	font-size:18px;
 }

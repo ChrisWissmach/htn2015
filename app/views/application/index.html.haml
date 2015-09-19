@@ -1,53 +1,34 @@
 = stylesheet_link_tag "home"
 
-%nav.navbar.navbar-default.navbar-fixed-top
-  .container
-    .navbar-header
-      %a.navbar-brand{href: "#"}
-    #navbar.navbar-collapse.collapse
-      %ul.nav.navbar-nav.navbar-right.list-inline
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", "dropdown-toggle" => "dropdown-toggle", :href => "#"} 
-            Hey
-            %span.caret
-          %ul.dropdown-menu
-            %li
-              %a{href:"#", style:"height:40px;"}Profile
-            %li
-              %a{href:"#", style:"height:40px;"}Settings
-            %li.divider
-            %li
-              %a{href:"#", style:"height:40px;"}Logout
+=render template: "navbar/navbar"
+
 
 		
-.container.snaek
+.container.snaek{style:"padding:30px;"}
   .col-md-6
-    #left_pic.col-md-12.picture
+    #left_pic.col-md-12.pictures
       %img.left_pic{src: '', "data-picture_id" => "0"}
   .col-md-1
   .col-md-6
-    #right_pic.col-md-12.picture
+    #right_pic.col-md-12.pictures
       %img.right_pic{src: '', "data-picture_id" => "0"}
 
 
 
-
-.container.desc
-	.col-md-3
-		.container
-			%image{src:"/assets/share.svg"}
-			%h2 Share
-			%p Easily upload your photos anytime, anywhere
-	.col-md-3
-		.container
-			%image{src:"/assets/vote.svg"}
-			%h2 Vote
-			%p Vote for your favorite photos
-	.col-md-3
-		.container
-			%image{src:"/assets/win.svg"}
-			%h2 Win
-			%p Compete for tons of weekly and monthly prizes
+.after_pics{style:"width:100%;background-color:gray;"}
+  .container.desc{style:"margin-top:100px;padding-bottom:100px;"}
+    .col-md-4
+      %image{src:"/assets/share.svg", style: "width:100px"}
+      %h2 Share
+      %p Easily upload your photos anytime, anywhere
+    .col-md-4
+      %image{src:"/assets/vote.svg", style: "width:100px;"}
+      %h2 Vote
+      %p Vote for your favorite photos
+    .col-md-4
+      %image{src:"/assets/win.svg", style: "width:100px;"}
+      %h2 Win
+      %p Compete for tons of weekly and monthly prizes
       
 =javascript_include_tag "home_page"
 

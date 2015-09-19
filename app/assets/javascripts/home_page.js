@@ -1,6 +1,6 @@
 
 
-$('.picture').click(function() {
+$('.pictures').click(function() {
 	var pic_id = $(this).attr('id');
 	if (pic_id === 'right_pic') {
 		$('#right_pic').css('margin-right', '25%');

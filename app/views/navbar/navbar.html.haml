@@ -1,0 +1,25 @@
+= stylesheet_link_tag "home"
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %a.navbar-brand{href: "#{root_url}"}
+    #navbar.navbar-collapse.collapse
+      
+      %ul.nav.navbar-nav.navbar-right.list-inline
+        -if session[:id] != nil
+          %li.dropdown
+            %a.dropdown-toggle{"data-toggle" => "dropdown", "dropdown-toggle" => "dropdown-toggle", :href => "#"} 
+              =User.find(session[:id]).username
+              %span.caret
+            %ul.dropdown-menu
+              %li
+                %a{href:"/users/#{session[:id]}", style:"height:40px;"}Profile
+              %li
+                %a{href:"#", style:"height:40px;"}Settings
+              %li.divider
+              %li
+                %a{href:"/logout", style:"height:40px;"}Logout
+
+        -else
+          %li
+            %a{href:"/login", style:"height:40px;"}Login
