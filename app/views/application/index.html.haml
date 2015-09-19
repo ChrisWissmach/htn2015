@@ -11,10 +11,35 @@
 .container.snaek
   .col-md-6
     #left_pic.col-md-12.picture
-      %img{src: '/assets/arizona1.jpg'}
+      %img.left_pic{src: '', "data-picture_id" => "0"}
   .col-md-1
   .col-md-6
     #right_pic.col-md-12.picture
-      %img{src: '/assets/arizona2.jpg'}
+      %img.right_pic{src: '', "data-picture_id" => "0"}
       
-=javascript_include_tag "script"
+=javascript_include_tag "home_page"
+
+<script>
+$(document).ready(function(){
+requestImages();
+})
+
+function requestImages(){
+$.post("/competition/get_pictures", {
+}, function(data) {
+if (data.success === true) {
+console.log(data);
+$(".left_pic").attr("src",data.first_image_url);
+$(".left_pic").attr("data-picture_id",data.first_image.id);
+$(".right_pic").attr("data-picture_id",data.second_image.id);
+$(".right_pic").attr("src",data.second_image_url);
+
+} else {
+
+console.log("boo");
+}
+});
+
+
+}
+</script>

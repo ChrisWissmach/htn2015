@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   post "competition/elo"
 
+  post "competition/get_pictures"
+
   
   root 'application#index'
 

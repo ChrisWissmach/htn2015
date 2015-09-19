@@ -1,3 +1,5 @@
+
+
 $('.picture').click(function() {
 	var pic_id = $(this).attr('id');
 	if (pic_id === 'right_pic') {
@@ -23,4 +25,5 @@ $('.picture').click(function() {
 		$('#left_pic').css('z-index', '-19999');
 		$('#left_pic').fadeOut();
 	}
+
 });

@@ -33,8 +33,13 @@ class CompetitionController < ApplicationController
   end
 	
 	
-	def find_pair (photo_elo)
-		var elo_search = 50
+	def get_pictures()
+		num_pics = Picture.count
+		@first_pic = Picture.all[rand(num_pics)]
+
+		photo_elo = @first_pic.elo.to_i
+
+		elo_search = 50
 	
 		until Picture.where(elo: (photo_elo - 50)...(photo_elo + 50))
 			elo_search += 50
@@ -43,6 +48,12 @@ class CompetitionController < ApplicationController
 		bound_array = Picture.where(elo: (photo_elo - 50)...(photo_elo + 50))
 		length = bound_array.length
 
-		return bound_array[rand(length)]
+		@second_pic = bound_array[rand(length)]
+
+		if @first_pic && @second_pic
+			render :json => {:success => true, first_image: @first_pic, second_image: @second_pic, first_image_url: @first_pic.image.url, second_image_url: @second_pic.image.url}
+		else
+			render :json => {:success => false}
+		end
 	end
 end
