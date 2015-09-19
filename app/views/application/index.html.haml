@@ -3,56 +3,31 @@
 =render template: "navbar/navbar"
 
 
-		
-.container.snaek{style:"padding:30px;"}
-  .col-md-6
-    #left_pic.col-md-12.pictures
-      %img.left_pic{src: '', "data-picture_id" => "0"}
-  .col-md-1
-  .col-md-6
-    #right_pic.col-md-12.pictures
-      %img.right_pic{src: '', "data-picture_id" => "0"}
+.main_content{style:"min-height:80vh;margin-top:-50px;"}	
+  .container.snaek{style:"padding:30px;"}
+    .col-md-6
+      #left_pic.col-md-12.pictures
+        %img.left_pic.pic_select{src: '', "data-picture_id" => "0"}
+    .col-md-1
+    .col-md-6
+      #right_pic.col-md-12.pictures
+        %img.right_pic.pic_select{src: '', "data-picture_id" => "0"}
 
 
 
-.after_pics{style:"width:100%;background-color:gray;"}
-  .container.desc{style:"margin-top:100px;padding-bottom:100px;"}
+.after_pics{style:"width:100%;background-color:white;"}
+  .container.desc{style:"margin-top:100px;padding-bottom:100px;padding-top:100px;"}
     .col-md-4
       %image{src:"/assets/share.svg", style: "width:100px"}
       %h2 Share
-      %p Easily upload your photos anytime, anywhere
+      %p Upload your photography and choose which photos you would like to enter into our themed contests!
     .col-md-4
       %image{src:"/assets/vote.svg", style: "width:100px;"}
       %h2 Vote
-      %p Vote for your favorite photos
+      %p Visitors to our site are able to vote for which photographs they prefer from the two side-by-side images.
     .col-md-4
       %image{src:"/assets/win.svg", style: "width:100px;"}
       %h2 Win
-      %p Compete for tons of weekly and monthly prizes
+      %p Get the most amount of votes to you photo and win some of our amazing weekly and monthly prizes!
       
 =javascript_include_tag "home_page"
-
-<script>
-$(document).ready(function(){
-requestImages();
-})
-
-function requestImages(){
-$.post("/competition/get_pictures", {
-}, function(data) {
-if (data.success === true) {
-console.log(data);
-$(".left_pic").attr("src",data.first_image_url);
-$(".left_pic").attr("data-picture_id",data.first_image.id);
-$(".right_pic").attr("data-picture_id",data.second_image.id);
-$(".right_pic").attr("src",data.second_image_url);
-
-} else {
-
-console.log("boo");
-}
-});
-
-
-}
-</script>

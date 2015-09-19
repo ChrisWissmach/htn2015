@@ -1,29 +1,49 @@
+function requestImages(){
+	$.post("/competition/get_pictures", {
+	}, function(data) {
+		if (data.success === true) {
+			console.log(data);
+			$(".left_pic").attr("src",data.first_image_url);
+			$(".left_pic").attr("data-picture_id",data.first_image.id);
+			$(".right_pic").attr("data-picture_id",data.second_image.id);
+			$(".right_pic").attr("src",data.second_image_url);
+
+		} else {
+
+		console.log("boo");
+		}
+})};
+
+requestImages();
+
+$(".pic_select").on("click",function(){
+	var selected_pic = $(this).attr("data-picture_id");
+	var ids = []
+	var non_selected_pic;
+	ids.push($($(".pic_select")[0]).attr("data-picture_id"));
+	ids.push($($(".pic_select")[1]).attr("data-picture_id"));
+	var i;
+	if (ids[0] == selected_pic){
+		non_selected_pic = ids[1];
+	}
+	else{
+		non_selected_pic = ids[0]
+	}
+	
+	$.post("/competition/elo", {
+		winner: selected_pic,
+		loser: non_selected_pic
+	}, function(data) {
+		if (data.success === true) {
+			console.log(data);
+			requestImages();
+			
+
+			} else {
+
+			console.log("boo");
+			}
+	});
 
 
-$('.pictures').click(function() {
-	var pic_id = $(this).attr('id');
-	if (pic_id === 'right_pic') {
-		$('#right_pic').css('margin-right', '25%');
-	}
-	$('#' + pic_id).css('width', '150%');
-	if (pic_id === 'left_pic') {
-		$('#' + pic_id).animate({
-			'margin-left': '25%'
-		});
-	}
-	else {
-		$('#' + pic_id).animate({
-			'margin-right': '25%'
-		});
-	}
-	$('#' + pic_id).delay(200).fadeOut();
-	if (pic_id === 'left_pic') {
-		$('#right_pic').css('z-index', '-19999');
-		$('#right_pic').fadeOut();
-	}
-	else {
-		$('#left_pic').css('z-index', '-19999');
-		$('#left_pic').fadeOut();
-	}
-
-});
+})

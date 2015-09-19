@@ -1,20 +1,20 @@
 class CompetitionController < ApplicationController
 
-	def elo(winner, loser)
+	def elo()
 
-		@winner = Picture.find(winner)
-		@loser = Picture.find(loser)
+		@winner = Picture.find(params[:winner])
+		@loser = Picture.find(params[:loser])
 
 		winner_score = @winner.elo
 		loser_score = @loser.elo
 
-    expected = 1 / (1 + 10**((loser - winner)/400))
+    expected = 1 / (1 + 10**((loser_score - winner_score)/400))
     mult = 0;
     
-    if (winner < 1200)
+    if (winner_score < 1200)
         mult = 30
-    elsif (winner < 1600)
-        mult = -0.05 *  winner + 100
+    elsif (winner_score < 1600)
+        mult = -0.05 *  winner_score + 100
     else
         mult = 10
     end
