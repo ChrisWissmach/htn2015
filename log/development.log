@@ -13847,3 +13847,81 @@ Started GET "/assets/arizona2.jpg" for ::1 at 2015-09-19 08:43:19 -0400
 
 
 Started GET "/assets/main_img.png" for ::1 at 2015-09-19 08:43:19 -0400
+
+
+Started GET "/" for ::1 at 2015-09-19 13:17:16 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ApplicationController#index as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", 7]]
+  Rendered navbar/navbar.html.haml (32.0ms)
+  Rendered application/index.html.haml within layouts/application (173.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1[0m  [["id", 7]]
+Completed 200 OK in 285ms (Views: 275.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/bootstrap.self-c68c406b70db1115478355392ee8e55e46903052ef2acc9b83a09aa57ea2c0d1.css?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/picture.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/competition.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/sessions.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/home.self-2b6869c885ef35def46b078d5437002541aae01209c9fe39ad71b5768a4aedc6.css?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/jquery.self-ad66c584c2469d2bb527ba7aef5893549f1554ccc8ab3ccb43bd09ce8c3bf7a1.js?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/jquery_ujs.self-d456baa54c1fa6be2ec3711f0a72ddf7a5b2f34a6b4f515f33767d6207b7d4b3.js?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/competition.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/home_page.self-34b78845b2a26c6314bd194324577c7940d2ca83a1953a29d2588ee5a6fdebec.js?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/picture.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/sessions.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/users.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/share.svg" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/vote.svg" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started GET "/assets/win.svg" for ::1 at 2015-09-19 13:17:17 -0400
+
+
+Started POST "/competition/get_pictures" for ::1 at 2015-09-19 13:17:17 -0400
+Processing by CompetitionController#get_pictures as */*
+  [1m[35m (0.2ms)[0m  SELECT COUNT(*) FROM "pictures"
+  [1m[36mPicture Load (0.2ms)[0m  [1mSELECT "pictures".* FROM "pictures"[0m
+  [1m[35mPicture Load (0.8ms)[0m  SELECT "pictures".* FROM "pictures" WHERE ("pictures"."elo" >= 1350 AND "pictures"."elo" < 1450)
+Completed 200 OK in 30ms (Views: 0.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/assets/icon.ico" for ::1 at 2015-09-19 13:17:17 -0400
