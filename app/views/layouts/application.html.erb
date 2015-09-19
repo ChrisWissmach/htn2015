@@ -13,8 +13,6 @@
 <% if session[:id] != nil %>
 	<blank> Logged in as: </blank>
 	<%= User.find(session[:id]).username %>
-<% else %>
-	<blank> Logged out </blank>
 <% end %>
 
 <% flash.each do |name, msg| %>
