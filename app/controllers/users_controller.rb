@@ -23,6 +23,7 @@ class UsersController < ApplicationController
 		@picture = Picture.new(picture_params)
 		@user = User.find(session[:id])
 		@picture.user_id = @user.id
+		@picture.elo = 1400
 		if @picture.save
 			redirect_to @user
 		end
