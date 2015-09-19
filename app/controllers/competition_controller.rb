@@ -31,5 +31,18 @@ class CompetitionController < ApplicationController
     end
 
   end
+	
+	
+	def find_pair (photo_elo)
+		var elo_search = 50
+	
+		until Picture.where(elo: (photo_elo - 50)...(photo_elo + 50))
+			elo_search += 50
+		end 
+	
+		bound_array = Picture.where(elo: (photo_elo - 50)...(photo_elo + 50))
+		length = bound_array.length
 
+		return bound_array[rand(length)]
+	end
 end
