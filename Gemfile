@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'simple_form'
 gem "haml-rails"
 gem 'bcrypt-ruby', :require => 'bcrypt'
+gem "paperclip", "~> 4.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'

@@ -5,8 +5,13 @@ Rails.application.routes.draw do
 
   get 'signup' => 'users#new'
 
-  resources :users
+  resources :users do
+  	resources :pictures
+  end
+
   resources :sessions
+
+  post "users/create_picture"
 
   
   root 'application#index'

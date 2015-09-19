@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
-
+	has_many :pictures
 	before_save :encrypt_password
 	attr_accessor :password
 
 	validates :username, :presence => true, :uniqueness => true, :length => { :in => 3..20 }
 	validates :email, :presence => true, :uniqueness => true
+	validates :email, format: { with: /\A[^@\s]+@([^@.\s]+\.)+[^@.\s]+\z/ }
 	validates :password, :confirmation => true #password_confirmation attr
 	validates_length_of :password, :in => 6..20, :on => :create
 

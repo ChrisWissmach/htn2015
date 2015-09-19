@@ -1,0 +1,9 @@
+.p=@user.username
+.p=@user.email
+
+- @user.pictures.each do |pic|
+	%img{src:"#{pic.image.url}", style:"width:100px;"}
+
+=simple_form_for(:picture, :url => { :controller => "users", :action => 'create_picture' }) do |f|
+	= f.input :image, as: "file", input_html: {accept: "image/*"}
+	= f.submit
