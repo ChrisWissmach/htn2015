@@ -1,0 +1,13 @@
+%h1 Signup
+
+=simple_form_for(:user, :url => {:controller => 'users', :action => 'create'}) do |f|
+	=f.input :username
+	=f.input :email
+	=f.input :password
+	=f.input :password_confirmation
+	= f.submit
+
+-if @user.errors.any?
+	%ul.Signup_Errors
+	-for message_error in @user.errors.full_messages
+		%li=message_error
