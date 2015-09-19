@@ -47,7 +47,7 @@ class CompetitionController < ApplicationController
 			
 			bound_array = Picture.where(elo: (photo_elo - elo_search)...(photo_elo + elo_search))
 			length = bound_array.length
-			random = rand(length)
+			random = (rand(length) * 3457) % length
 			@second_pic = bound_array[random]
 			if length == 1
 				elo_search += 50
