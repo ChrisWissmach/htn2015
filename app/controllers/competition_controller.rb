@@ -36,19 +36,26 @@ class CompetitionController < ApplicationController
 	def get_pictures()
 		num_pics = Picture.count
 		@first_pic = Picture.all[rand(num_pics)]
+		@second_pic = nil
+
 
 		photo_elo = @first_pic.elo.to_i
 
 		elo_search = 50
 	
-		until Picture.where(elo: (photo_elo - 50)...(photo_elo + 50))
-			elo_search += 50
+		until Picture.where(elo: (photo_elo - elo_search)...(photo_elo + elo_search)) && (@second_pic != @first_pic) && @second_pic
+			
+			bound_array = Picture.where(elo: (photo_elo - elo_search)...(photo_elo + elo_search))
+			length = bound_array.length
+			random = rand(length)
+			@second_pic = bound_array[random]
+			if length == 1
+				elo_search += 50
+			end
+
 		end 
 	
-		bound_array = Picture.where(elo: (photo_elo - 50)...(photo_elo + 50))
-		length = bound_array.length
-
-		@second_pic = bound_array[rand(length)]
+		
 
 		if @first_pic && @second_pic
 			render :json => {:success => true, first_image: @first_pic, second_image: @second_pic, first_image_url: @first_pic.image.url, second_image_url: @second_pic.image.url}
