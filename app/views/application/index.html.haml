@@ -1,3 +1,20 @@
 = stylesheet_link_tag "home"
 
-%header
+%nav.navbar.navbar-default.navbar-fixed-top
+  .container
+    .navbar-header
+      %a.navbar-brand{href: "#"}
+    #navbar.navbar-collapse.collapse
+      %ul{class: "nav navbar-nav navbar-right"}
+        %li
+          %a{href: "#"} Fag
+.container.snaek
+  .col-md-6
+    #left_pic.col-md-12.picture
+      %img{src: '/assets/arizona1.jpg'}
+  .col-md-1
+  .col-md-6
+    #right_pic.col-md-12.picture
+      %img{src: '/assets/arizona2.jpg'}
+      
+=javascript_include_tag "script"
