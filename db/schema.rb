@@ -11,24 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150919100632) do
+ActiveRecord::Schema.define(version: 20150920024659) do
 
-# Could not dump table "competitions" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "competitions", force: :cascade do |t|
+    t.string   "category"
+    t.text     "entered"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean  "is_active"
+    t.string   "status"
+  end
 
   create_table "pictures", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
+    t.integer  "elo"
+    t.integer  "competition_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
-    t.integer  "elo"
-    t.integer  "competition_id"
   end
 
-  add_index "pictures", ["user_id"], name: "index_pictures_on_user_id"
+  add_index "pictures", ["user_id"], name: "index_pictures_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -39,4 +48,5 @@ ActiveRecord::Schema.define(version: 20150919100632) do
     t.datetime "updated_at",         null: false
   end
 
+  add_foreign_key "pictures", "users"
 end
