@@ -3,14 +3,11 @@ function requestImages(){
 	}, function(data) {
 		if (data.success === true) {
 			console.log(data);
-			$(".left_pic").attr("src",data.first_image_url);
+			$(".left_pic").attr("src",data.first_image_url).fadeIn("slow");
 			$(".left_pic").attr("data-picture_id",data.first_image.id);
+			$(".right_pic").attr("src",data.second_image_url).fadeIn("slow");
 			$(".right_pic").attr("data-picture_id",data.second_image.id);
-			$(".right_pic").attr("src",data.second_image_url);
 
-		} else {
-
-		console.log("boo");
 		}
 })};
 
@@ -37,13 +34,13 @@ $(".pic_select").on("click",function(){
 		if (data.success === true) {
 			console.log(data);
 			requestImages();
-			
-
-			} else {
-
-			console.log("boo");
 			}
 	});
+	
+	selected_pic.animate({
+		width: "50%"
+	}, 200, this.delay(100).fadeOut("slow"));
+	non_selected_pic.fadeOut("slow");
 
 
 })
