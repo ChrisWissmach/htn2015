@@ -8,7 +8,7 @@
       %ul.nav.navbar-nav.navbar-right.list-inline
         -if session[:id] != nil
           %li.dropdown
-            %a.dropdown-toggle{"data-toggle" => "dropdown", "dropdown-toggle" => "dropdown-toggle", :href => "#"} 
+            %a.dropdown-toggle{"data-toggle" => "dropdown", "dropdown-toggle" => "dropdown-toggle", :href => "#", style:"font-size:20px;"} 
               =User.find(session[:id]).username
               %span.caret
             %ul.dropdown-menu

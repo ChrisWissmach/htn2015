@@ -3,16 +3,18 @@
 =render template: "navbar/navbar"
 
 
-.main_content{style:"min-height:80vh;margin-top:-50px;"}
-	%h2.category
-  .container.snaek{style:"padding:30px;"}
-    .col-md-6
-      #left_pic.col-md-12.pictures
-        %img.left_pic.pic_select{src: '', "data-picture_id" => "0"}
-    .col-md-1
-    .col-md-6
-      #right_pic.col-md-12.pictures
-        %img.right_pic.pic_select{src: '', "data-picture_id" => "0"}
+.main_content{style:"min-height:60vh;margin-top:-50px;"}
+  
+  .container.snaek{style: "padding:30px;"}
+    -if Competition.where(status:"active").count != 0
+      %p{style:"width:100%;text-align:center;font-size:30px;margin-bottom:30px;"} Current competition: #{Competition.where(status:"active").first.category}
+      .col-md-6
+        #left_pic.col-md-12.pictures
+          %img.left_pic.pic_select{src: '', "data-picture_id" => "0"}
+      .col-md-1
+      .col-md-6
+        #right_pic.col-md-12.pictures
+          %img.right_pic.pic_select{src: '', "data-picture_id" => "0"}
 
 
 
@@ -20,7 +22,7 @@
   .container.desc{style:"margin-top:100px;padding-bottom:100px;padding-top:100px;"}
     .col-md-4
       %image{src:"/assets/share.svg", style: "width:100px"}
-      %h2 Share
+      %h2 Upload
       %p Upload your photography and choose which photos you would like to enter into our themed contests!
     .col-md-4
       %image{src:"/assets/vote.svg", style: "width:100px;"}

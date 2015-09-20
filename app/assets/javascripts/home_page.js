@@ -9,8 +9,6 @@ function requestImages(){
 			$(".right_pic").attr("data-picture_id",data.second_image.id);
 		}});
 	
-	var categories = ["nature", "beautiful", "landscapes", "trees", "green"];
-	$(".category").text(categories[(rand(13)*3457)%5]);
 };
 
 requestImages();
@@ -35,14 +33,12 @@ $(".pic_select").on("click",function(){
 	}, function(data) {
 		if (data.success === true) {
 			console.log(data);
+			$(this).css("zoom","150%");
 			requestImages();
 			}
 	});
 	
-	selected_pic.animate({
-		width: "50%"
-	}, 200, $(this).delay(100).fadeOut("slow"));
-	non_selected_pic.fadeOut("slow");
+	
 
 
 })

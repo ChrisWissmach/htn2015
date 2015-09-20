@@ -1,6 +1,12 @@
 class CompetitionController < ApplicationController
+	
 
-	def elo()
+	def show
+		@competition = Competition.find(params[:id])
+	end
+
+
+	def elo
 
 		@winner = Picture.find(params[:winner])
 		@loser = Picture.find(params[:loser])
@@ -33,7 +39,7 @@ class CompetitionController < ApplicationController
   end
 	
 	
-	def get_pictures()
+	def get_pictures
 		num_pics = Picture.count
 		@first_pic = Picture.all[rand(num_pics)]
 		@second_pic = nil

@@ -1,17 +1,31 @@
 =render template: "navbar/navbar"
 
-.p=@user.username
-.p=@user.email
-
-- @user.pictures.each do |pic|
-	%img{src:"#{pic.image.url}", style:"width:100px;"}
+.user_name{style:"width:90%;height:200px;background-color:white;margin-top:70px;margin-left:auto;margin-right:auto;text-align:center;border-radius:10px;line-height:200px;padding-top:30px;"}
+	%h1{style:"font-size:80px;"}=User.find(params[:id]).username
 
 =simple_form_for(:picture, :url => { :controller => "users", :action => 'create_picture' }) do |f|
-	= f.input :image, as: "file", input_html: {accept: "image/*"}
-	= f.submit
-	
-%input{type: "radio"} Nature
-%input{type: "radio"} Beautiful
-%input{type: "radio"} Landscapes
-%input{type: "radio"} Trees
-%input{type: "radio"} Green
+	= f.input :image, label: false,as: "file", input_html: {accept: "image/*"}, input_html:{class: "form-control pic_input", style:"width:200px;margin:auto;margin-top:20px;display:none;"}
+	%div{style:"width:100%;text-align:center"}
+		= f.submit "Upload", class: "btn btn-default upload_button", style:"margin-bottom:20px;margin-top:5px;display:none;"
+
+.pics{style:"padding:50px;width:90%;border-radius:10px;background-color:white;margin-left:auto;margin-right:auto;margin-top:50px;"}
+	%h1{style:"margin-top:0px;"} 
+		%blank{style:"float:left;"} Uploaded Pictures
+		-if session[:id].to_i == params[:id].to_i
+			%a.add_new_pic{style:"float:right;text-decoration:none;", href:'#'}Add New
+	.images{style:"margin-top:80px;"}
+		- User.find(params[:id]).pictures.each do |pic|
+			%img{src:"#{pic.image.url}", style:"width:300px;padding:10px;"}
+
+
+<script>
+$(document).ready(function(){
+$(".add_new_pic").on("click",function(){
+$(".upload_button").show();
+$(".pic_input").show();
+$(".pics").css("margin-top","0");
+})
+
+})
+
+</script>
