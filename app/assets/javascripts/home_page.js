@@ -7,9 +7,11 @@ function requestImages(){
 			$(".left_pic").attr("data-picture_id",data.first_image.id);
 			$(".right_pic").attr("src",data.second_image_url).fadeIn("slow");
 			$(".right_pic").attr("data-picture_id",data.second_image.id);
-
-		}
-})};
+		}});
+	
+	var categories = ["nature", "beautiful", "landscapes", "trees", "green"];
+	$(".category").text(categories[(rand(13)*3457)%5]);
+};
 
 requestImages();
 
@@ -39,7 +41,7 @@ $(".pic_select").on("click",function(){
 	
 	selected_pic.animate({
 		width: "50%"
-	}, 200, this.delay(100).fadeOut("slow"));
+	}, 200, $(this).delay(100).fadeOut("slow"));
 	non_selected_pic.fadeOut("slow");
 
 

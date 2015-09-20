@@ -9,3 +9,9 @@
 =simple_form_for(:picture, :url => { :controller => "users", :action => 'create_picture' }) do |f|
 	= f.input :image, as: "file", input_html: {accept: "image/*"}
 	= f.submit
+	
+%input{type: "radio"} Nature
+%input{type: "radio"} Beautiful
+%input{type: "radio"} Landscapes
+%input{type: "radio"} Trees
+%input{type: "radio"} Green
